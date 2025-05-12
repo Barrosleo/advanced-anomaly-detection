@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Anomaly Detection Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Advanced Anomaly Detection Dashboard</h1>
+    <div id="chart" style="width:90%; height:500px;"></div>
+    <script>
+        // Fetch anomalies from the API and plot them
+        fetch('/api/anomalies')
+            .then(response => response.json())
+            .then(data => {
+                const xValues = data.map(item => new Date(item.timestamp));
+                const yValues = data.map((_, i) => i + 1);
+                const textValues = data.map(item => `${item.source} | ${item.risk}`);
+                
+                const trace = {
+                    x: xValues,
+                    y: yValues,
+                    mode: 'markers',
+                    type: 'scatter',
+                    text: textValues,
+                    marker: { size: 14, color: 'red' }
+                };
+
+                const layout = {
+                    title: 'Anomaly Timeline & Risk Scores',
+                    xaxis: { title: 'Time' },
+                    yaxis: { title: 'Anomaly Index' }
+                };
+
+                Plotly.newPlot('chart', [trace], layout);
+            })
+            .catch(error => console.error('Error fetching anomaly data:', error));
+    </script>
+</body>
+</html>
