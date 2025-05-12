@@ -39,9 +39,24 @@ node server.js
 
 The Node.js API (and dashboard) will be available at http://localhost:3000/dashboard.
 
-Architecture & Design
+**Architecture & Design
 See the docs/architecture.md file for details on the design decisions, data flow, and integration of the multi-language components.
 
-License
+**License
 This project is licensed under the MIT License.
 
+** Repository Structure
+advanced-anomaly-detection/
+├── README.md
+├── python-module/
+│   ├── anomaly_detector.py      # Flask API & ML-based anomaly detection
+│   ├── requirements.txt         # Python dependencies
+│   └── data/
+│       └── siem_logs_sample.csv # Sample SIEM log data
+├── nodejs-api/
+│   ├── server.js                # Express API & alert integration
+│   ├── package.json             # Node.js dependencies
+│   └── views/
+│       └── dashboard.html       # HTML & Plotly.js dashboard
+└── docs/
+    └── architecture.md          # Detailed design and architecture explanation
