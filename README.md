@@ -39,13 +39,13 @@ node server.js
 
 The Node.js API (and dashboard) will be available at http://localhost:3000/dashboard.
 
-##Architecture & Design
+## Architecture & Design
 See the docs/architecture.md file for details on the design decisions, data flow, and integration of the multi-language components.
 
-##License
+## License
 This project is licensed under the MIT License.
 
-##Repository Structure
+## Repository Structure
 advanced-anomaly-detection/
 ├── README.md
 ├── python-module/
